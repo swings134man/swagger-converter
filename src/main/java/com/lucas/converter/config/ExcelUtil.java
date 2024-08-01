@@ -20,16 +20,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Slf4j
-public class ExcelUItil {
+public class ExcelUtil {
 
     /**
      * Sxssf bulk Stream Download
      * @param model
-     * @param request
      * @param response
      * @param addRow
      */
-    public static void downloadExcelToSxssf(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response, AddRowToSXSSF addRow) {
+    public static void downloadExcelToSxssf(Map<String, Object> model, HttpServletResponse response, AddRowToSXSSF addRow) {
         try {
             // Retrieve entered information
             Map<String, Object> excelData = (Map<String, Object>) model.get(ExcelConstant.EX_EXCEL_DATA);
@@ -38,14 +37,14 @@ public class ExcelUItil {
             String rawFileName = (String) model.get(ExcelConstant.EX_FILE_NAME);
             String fileName = "";
             if (StringUtils.isNotEmpty(rawFileName)) {
-                fileName = createFileName(rawFileName) + "x";
-                setFileNameToResponse(request, response, fileName);
+                rawFileName = createFileName(rawFileName) + "x";
+//                setFileNameToResponse(request, response, fileName);
             } else {
                 rawFileName = ExcelConstant.EX_EXCEL_DATA;
             }
 
             // Create a workbook
-            SXSSFWorkbook workbook = new SXSSFWorkbook(300);
+            SXSSFWorkbook workbook = new SXSSFWorkbook(100);
             // Create a new sheet in the workbook
             SXSSFSheet sheet = workbook.createSheet(rawFileName);
 
