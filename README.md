@@ -1,5 +1,7 @@
 # Swagger Api To Docs Plugin
 
+#### Last Updated 2024.08.02
+
 ### 1. Using the plugin
 1. Java 11
 2. gradle
